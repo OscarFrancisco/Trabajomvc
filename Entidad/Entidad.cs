@@ -8,5 +8,6 @@ namespace Entidad
 {
     public class Entidad
     {
+        public int t { get; set; }
     }
 }
