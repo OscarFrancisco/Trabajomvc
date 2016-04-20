@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entidad
+namespace Dominio
 {
-    public class Entidad
+    public class Customer
     {
         public int t { get; set; }
     }
