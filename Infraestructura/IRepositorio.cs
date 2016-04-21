@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dominio;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -7,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace Infraestructura
 {
-    public interface IRepositorio : IDisposable
+    public interface IRepositorio : IUnitOfWork
     {
-        int SaveChanges();
+        IDbSet<Customer> Customers { get; set; }
     }
 }

@@ -10,14 +10,14 @@ namespace Servicio
 {
     public class CustomerServicio : ICustomerServicio<Customer>
     { 
-        readonly IContexto _context;
-        public CustomerServicio(IContexto context)
+        readonly IRepositorio _context;
+        public CustomerServicio(IRepositorio context)
         {
             this._context = context;
         }
         public Customer Insertar(Customer instancia)
         {
-            _context.Usuario.Add(instancia);
+            _context.Customers.Add(instancia);
             _context.SaveChanges();
             return instancia;  
         }
@@ -32,17 +32,22 @@ namespace Servicio
         public int Eliminar(Customer instancia)
         {
             var Instancia = Obtener(instancia.Id);
-            _context.Usuario.Remove(Instancia);
+            _context.Customers.Remove(Instancia);
             return _context.SaveChanges();
         }
 
         public IEnumerable<Customer> Listar(string nombre)
         {
-            return _context.Usuario.Where(x=>x.Nombre == nombre).ToList();
+            return _context.Customers.Where(x=>x.Nombre == nombre).ToList();
         }
         public Customer Obtener(int Identity)
         {
-            return _context.Usuario.Where(c => c.Id == Identity).FirstOrDefault();
+            return _context.Customers.Where(c => c.Id == Identity).FirstOrDefault();
+        }
+
+        public void Dispose()
+        {
+            this._context.Dispose();
         }
     }
         

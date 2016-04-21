@@ -47,10 +47,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppContext.cs" />
     <Compile Include="Configuration\CustomerConfiguration.cs" />
-    <Compile Include="Contexto.cs" />
-    <Compile Include="IContexto.cs" />
-    <Compile Include="Interface1.cs" />
+    <Compile Include="IUnitOfWork.cs" />
     <Compile Include="IRepositorio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
