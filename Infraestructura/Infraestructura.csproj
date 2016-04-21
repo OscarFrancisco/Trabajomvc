@@ -50,6 +50,7 @@
     <Compile Include="Configuration\CustomerConfiguration.cs" />
     <Compile Include="Contexto.cs" />
     <Compile Include="IContexto.cs" />
+    <Compile Include="IRepositorio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

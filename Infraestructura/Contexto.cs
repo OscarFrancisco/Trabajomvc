@@ -11,11 +11,12 @@ namespace Infraestructura
     public class Contexto : DbContext, IContexto
     {
         public IDbSet<Customer> Usuario {get;set;}
-
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new Configuration.CustomerConfiguration());
             base.OnModelCreating(modelBuilder);
         }
+        
+
     }
 }

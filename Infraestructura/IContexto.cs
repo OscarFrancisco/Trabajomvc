@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 using Dominio;
 namespace Infraestructura
 {
-    public interface IContexto : IDisposable
+    public interface IContexto : IDisposable, IRepositorio
     {
         IDbSet<Customer> Usuario { get; set; }
+        
     }
 }
