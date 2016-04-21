@@ -10,7 +10,7 @@ namespace Servicio
 {
     public class CustomerServicio : ICustomerServicio<Customer>
     { 
-        private IContexto _context;
+        readonly IContexto _context;
         public CustomerServicio(IContexto context)
         {
             this._context = context;
