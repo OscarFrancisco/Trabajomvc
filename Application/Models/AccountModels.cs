@@ -30,7 +30,7 @@ namespace Application.Models
     public class RegisterExternalLoginModel
     {
         [Required]
-        [Display(Name = "Nombre de usuario")]
+        [Display(Name = "Pepit")]
         public string UserName { get; set; }
 
         public string ExternalLoginData { get; set; }

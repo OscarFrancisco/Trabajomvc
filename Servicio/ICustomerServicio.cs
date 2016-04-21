@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Servicio
 {
-    public interface ICustomerServicio<T>
+    public interface ICustomerServicio<T> : IDisposable
     {
         T Insertar(T instancia);
         int Editar(T instancia);
