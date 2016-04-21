@@ -28,5 +28,12 @@ namespace Application.Controllers
 
             return View();
         }
+
+        public ActionResult Customer()
+        {
+            //ViewBag.Message = "Tu mantenimiento.";
+
+            return View();
+        }
     }
 }

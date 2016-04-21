@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Globalization;
 using System.Web.Security;
+using Dominio;
 
 namespace Application.Models
 {
@@ -87,6 +88,23 @@ namespace Application.Models
         [Compare("Password", ErrorMessage = "La contraseña y la contraseña de confirmación no coinciden.")]
         public string ConfirmPassword { get; set; }
     }
+    public class CustomerModel : Customer
+    {
+        //public int Id { get; set; }
+        [Required]
+        [Display(Name = "Nombre:")]
+        public string Nombre { get; set; }
+        [Required]
+        [Display(Name = "Telefono:")]
+        public string Telefono { get; set; }
+        [Required]
+        [Display(Name = "Correo:")]
+        public string Correo { get; set; }
+        [Required]
+        [Display(Name = "Nombre Usuario:")]
+        public string NombreUsuario { get; set; } 
+    }
+
 
     public class ExternalLogin
     {
