@@ -7,7 +7,7 @@ using System.Web.Routing;
 
 namespace Application
 {
-    public class RouteConfig
+    public class RouteConfig //
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
@@ -15,7 +15,7 @@ namespace Application
 
             routes.MapRoute(
                 name: "Default",
-                url: "{controller}/{action}/{id}",
+                url: "{controller}/{action}/{id}",         //Controlador / Metodo
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
         }

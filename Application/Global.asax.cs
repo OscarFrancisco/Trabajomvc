@@ -12,7 +12,7 @@ namespace Application
     // Nota: para obtener instrucciones sobre cómo habilitar el modo clásico de IIS6 o IIS7, 
     // visite http://go.microsoft.com/?LinkId=9394801
 
-    public class MvcApplication : System.Web.HttpApplication
+    public class MvcApplication : System.Web.HttpApplication // SE CARGA UNA SOLA WEB
     {
         protected void Application_Start()
         {
