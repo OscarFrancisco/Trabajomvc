@@ -39,12 +39,8 @@ namespace Servicio
             _context.Customers.Remove(Instancia);
             return _context.SaveChanges();
         }
-
         public IEnumerable<Customer> Listar(string nombre)
         {
-            var xy = _context as DbContext;
-            var str = xy.Database.Connection.ConnectionString;
-            //.Database.Connection.ConnectionString;
             return _context.Customers.Where(x=>x.Nombre == (nombre ?? x.Nombre)).ToList();
         }
         public Customer Obtener(int Identity)

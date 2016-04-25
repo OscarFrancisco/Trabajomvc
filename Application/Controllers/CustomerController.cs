@@ -7,20 +7,26 @@ using System.Web.Mvc;
 using Dominio;
 using Servicio;
 using Infraestructura;
+using Autofac;
+using Autofac.Integration.Mvc;
+using Autofac.Core;
 
 namespace Application.Controllers
 {
     public class CustomerController : Controller
     {
-        public CustomerController()
+
+        private ICustomerServicio<Customer> _UsuarioServicio { get; set; }
+
+        public CustomerController(CustomerServicio usuarioServicio)
         {
- 
+            _UsuarioServicio = usuarioServicio;
         }
         public ActionResult Index(string name)
         {
-            IRepositorio Contexto = new AppContext();
-            ICustomerServicio<Customer> UsuarioServicio = new CustomerServicio(Contexto);
-            return View(UsuarioServicio.Listar(name));
+            //var _Container = Container.BeginLifetimeScope();
+            //var UsuarioServicio = _Container.Resolve<ICustomerServicio<Customer>>(); 
+            return View(_UsuarioServicio.Listar(name));
         }
         public ActionResult Details(int id)
         {
