@@ -15,24 +15,21 @@ namespace Application.Controllers
 {
     public class CustomerController : Controller
     {
+        private readonly ICustomerServicio<Customer> _UsuarioServicio = null;
 
-        private ICustomerServicio<Customer> _UsuarioServicio { get; set; }
+        public CustomerController(){}
 
-        public CustomerController(CustomerServicio usuarioServicio)
+        public CustomerController(ICustomerServicio<Customer> usuarioServicio)
         {
-            _UsuarioServicio = usuarioServicio;
+            this._UsuarioServicio = usuarioServicio;
         }
         public ActionResult Index(string name)
         {
-            //var _Container = Container.BeginLifetimeScope();
-            //var UsuarioServicio = _Container.Resolve<ICustomerServicio<Customer>>(); 
-            return View(_UsuarioServicio.Listar(name));
+            return View(this._UsuarioServicio.GetList(name));
         }
         public ActionResult Details(int id)
         {
-            IRepositorio Contexto = new AppContext();
-            ICustomerServicio<Customer> UsuarioServicio = new CustomerServicio(Contexto);
-            return View(UsuarioServicio.Obtener(id));
+            return View(this._UsuarioServicio.Get(id));
         }
         public ActionResult Create()
         {
@@ -51,9 +48,7 @@ namespace Application.Controllers
                                         Correo = collection["Correo"],
                                         NombreUsuario = collection["NombreUsuario"]
                                     };
-                IRepositorio Contexto = new AppContext();
-                ICustomerServicio<Customer> UsuarioServicio = new CustomerServicio(Contexto);
-                UsuarioServicio.Insertar(Usuario);
+                this._UsuarioServicio.Insert(Usuario);
                 return RedirectToAction("Index");
             }
             catch
@@ -78,9 +73,7 @@ namespace Application.Controllers
                     Correo = collection["Correo"],
                     NombreUsuario = collection["NombreUsuario"]
                 };
-                IRepositorio Contexto = new AppContext();
-                ICustomerServicio<Customer> UsuarioServicio = new CustomerServicio(Contexto);
-                UsuarioServicio.Editar(Usuario);
+                this._UsuarioServicio.Edit(Usuario);
                 return RedirectToAction("Index");
             }
             catch
@@ -101,9 +94,7 @@ namespace Application.Controllers
                 {
                     Id = id
                 };
-                IRepositorio Contexto = new AppContext();
-                ICustomerServicio<Customer> UsuarioServicio = new CustomerServicio(Contexto);
-                UsuarioServicio.Eliminar(Usuario);
+                this._UsuarioServicio.Delete(Usuario);
                 return RedirectToAction("Index");
             }
             catch

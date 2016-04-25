@@ -8,10 +8,10 @@ namespace Servicio
 {
     public interface ICustomerServicio<T> : IDisposable
     {
-        T Insertar(T instancia);
-        int Editar(T instancia);
-        int Eliminar(T instancia);
-        IEnumerable<T> Listar(string nombre);
-        T Obtener(int Identity);
+        T Insert(T instancia);
+        int Edit(T instancia);
+        int Delete(T instancia);
+        IEnumerable<T> GetList(string nombre);
+        T Get(int Identity);
     }
 }
