@@ -31,8 +31,6 @@ namespace Application.Controllers
 
         public ActionResult Customer()
         {
-            //ViewBag.Message = "Tu mantenimiento.";
-
             return View();
         }
     }

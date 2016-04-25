@@ -17,6 +17,7 @@ namespace Application.Controllers
     [InitializeSimpleMembership]
     public class AccountController : Controller
     {
+        
         //
         // GET: /Account/Login
 
@@ -259,13 +260,13 @@ namespace Application.Controllers
             {
                 return RedirectToAction("Manage");
             }
-
+                      
             if (ModelState.IsValid)
             {
                 // Insertar un nuevo usuario en la base de datos
                 using (UsersContext db = new UsersContext())
                 {
-                    UserProfile user = db.UserProfiles.FirstOrDefault(u => u.UserName.ToLower() == model.UserName.ToLower());
+                    /*UserProfile user = db.UserProfiles.FirstOrDefault(u => u.UserName.ToLower() == model.UserName.ToLower());
                     // Comprobar si el usuario ya existe
                     if (user == null)
                     {
@@ -281,8 +282,8 @@ namespace Application.Controllers
                     else
                     {
                         ModelState.AddModelError("UserName", "El nombre de usuario ya existe. Escriba un nombre de usuario diferente.");
-                    }
-                }
+                    } */
+                } 
             }
 
             ViewBag.ProviderDisplayName = OAuthWebSecurity.GetOAuthClientData(provider).DisplayName;

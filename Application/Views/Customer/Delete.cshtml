@@ -1,0 +1,47 @@
+﻿@model Dominio.Customer
+
+@{
+    ViewBag.Title = "Eliminar";
+}
+
+<h2>Eliminar</h2>
+
+<h3>Desea eliminar?</h3>
+<fieldset>
+    <legend>Customer</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Nombre)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Nombre)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Telefono)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Telefono)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Correo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Correo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NombreUsuario)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NombreUsuario)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Eliminar" /> |
+        @Html.ActionLink("Regresar a la Lista", "Index")
+    </p>
+}

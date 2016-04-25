@@ -16,7 +16,7 @@ namespace Application.Models
         {
         }
 
-        public DbSet<UserProfile> UserProfiles { get; set; }
+        //public DbSet<UserProfile> UserProfiles { get; set; }
     }
 
     [Table("UserProfile")]
@@ -88,22 +88,7 @@ namespace Application.Models
         [Compare("Password", ErrorMessage = "La contraseña y la contraseña de confirmación no coinciden.")]
         public string ConfirmPassword { get; set; }
     }
-    public class CustomerModel : Customer
-    {
-        //public int Id { get; set; }
-        [Required]
-        [Display(Name = "Nombre:")]
-        public string Nombre { get; set; }
-        [Required]
-        [Display(Name = "Telefono:")]
-        public string Telefono { get; set; }
-        [Required]
-        [Display(Name = "Correo:")]
-        public string Correo { get; set; }
-        [Required]
-        [Display(Name = "Nombre Usuario:")]
-        public string NombreUsuario { get; set; } 
-    }
+
 
 
     public class ExternalLogin

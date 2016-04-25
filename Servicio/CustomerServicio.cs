@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Dominio;
 using Infraestructura;
+using System.Data.Entity;
 
 namespace Servicio
 {
@@ -25,7 +26,10 @@ namespace Servicio
         public int Editar(Customer instancia)
         {
             var Usuario = Obtener(instancia.Id);
-            Usuario = instancia;
+            Usuario.Nombre = instancia.Nombre;
+            Usuario.NombreUsuario = instancia.NombreUsuario;
+            Usuario.Telefono = instancia.Telefono;
+            Usuario.Correo = instancia.Correo;
             return _context.SaveChanges();
         }
 
@@ -38,7 +42,10 @@ namespace Servicio
 
         public IEnumerable<Customer> Listar(string nombre)
         {
-            return _context.Customers.Where(x=>x.Nombre == nombre).ToList();
+            var xy = _context as DbContext;
+            var str = xy.Database.Connection.ConnectionString;
+            //.Database.Connection.ConnectionString;
+            return _context.Customers.Where(x=>x.Nombre == (nombre ?? x.Nombre)).ToList();
         }
         public Customer Obtener(int Identity)
         {
