@@ -35,7 +35,9 @@ namespace WEB_API.Controllers
         // POST api/Customer
         public HttpResponseMessage Post([FromBody]Customer value)
         {
-            return Request.CreateResponse<Customer>(HttpStatusCode.Created, _UsuarioServicio.Insert(value));
+            if(null != value)
+                return Request.CreateResponse<Customer>(HttpStatusCode.Created, _UsuarioServicio.Insert(value));
+            return Request.CreateResponse<Customer>(HttpStatusCode.NotFound, value);
         }
         // PUT api/Customer/5      
         public void Put(int id, [FromBody]Customer value)
