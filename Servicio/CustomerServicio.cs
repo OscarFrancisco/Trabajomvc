@@ -39,7 +39,15 @@ namespace Servicio
         }
         public IEnumerable<Customer> GetList(string nombre)
         {
-            return _context.Customers.Where(x=>x.Nombre == (nombre ?? x.Nombre)).ToList();
+            var xY = _context as AppContext;
+            var connec = xY.Database.Connection.ConnectionString;
+            try
+            {
+                return _context.Customers.Where(x => x.Nombre == (nombre ?? x.Nombre)).ToList();
+            }
+            catch (System.Exception){
+                return new List<Customer>();
+            }
         }
         public Customer Get(int Identity)
         {
