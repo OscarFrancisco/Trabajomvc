@@ -8,6 +8,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using WEB_API.App_Start;
 using WEB_API.Controllers;
+using WEB_API.Handler;
 
 namespace WEB_API
 {
@@ -20,6 +21,7 @@ namespace WEB_API
         {
             AreaRegistration.RegisterAllAreas();
 
+            HandlerConfig.RegisterHandlers(GlobalConfiguration.Configuration.MessageHandlers);
             GlobalConfiguration.Configuration.Filters.Add(new ExceptionHandlingAttribute());
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

@@ -9,6 +9,7 @@ using System.Web.Http;
 
 namespace WEB_API.Controllers
 {
+    [Authorize]
     public class CustomerController : ApiController
     {
         private readonly ICustomerServicio<Customer> _UsuarioServicio = null;
@@ -18,10 +19,9 @@ namespace WEB_API.Controllers
             this._UsuarioServicio = usuarioServicio;
         }
         // GET api/Customer
-        public IEnumerable<Customer> Get()
+        public IEnumerable<Customer> Get(string nombre)
         {
-            throw new Exception("Xavi Error");
-            //return _UsuarioServicio.GetList(null).ToList();
+            return _UsuarioServicio.GetList(nombre).ToList();
         }
         public HttpResponseMessage Get(int id)
         {
@@ -35,7 +35,7 @@ namespace WEB_API.Controllers
         // POST api/Customer
         public HttpResponseMessage Post([FromBody]Customer value)
         {
-            if(null != value)
+            if (null != value)
                 return Request.CreateResponse<Customer>(HttpStatusCode.Created, _UsuarioServicio.Insert(value));
             return Request.CreateResponse<Customer>(HttpStatusCode.NotFound, value);
         }
@@ -48,7 +48,7 @@ namespace WEB_API.Controllers
         // DELETE api/Customer/5
         public void Delete(int id)
         {
-            var customer = new Customer(){Id=id};
+            var customer = new Customer() { Id = id };
             _UsuarioServicio.Delete(customer);
         }
     }
