@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
+
     [Table("Customer")]
     public class Customer
     {
