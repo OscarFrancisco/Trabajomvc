@@ -12,8 +12,8 @@ namespace WEB_API.Handler
     {
         public static void RegisterHandlers(Collection<DelegatingHandler> handlers)
         {
-            /*handlers.Add(new CorsMessageHandler());
-            handlers.Add(new AuthorizeHandler());*/
+            handlers.Add(new CorsMessageHandler());
+            handlers.Add(new AuthorizeHandler());    
             handlers.Add(new JuguetitoHandler());
         }
     }
