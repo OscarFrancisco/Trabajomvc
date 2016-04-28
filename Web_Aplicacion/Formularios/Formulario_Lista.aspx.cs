@@ -38,5 +38,7 @@ namespace Web_Aplicacion.Formularios
                 return _UsuarioServicio.Delete(customer);
             throw new Exception("Error al Eliminar");
         }
+
+        
     }
 }

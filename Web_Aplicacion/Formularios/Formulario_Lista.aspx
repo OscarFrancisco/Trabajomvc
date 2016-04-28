@@ -48,7 +48,7 @@
                   <asp:Label runat="server" Text='<%# Eval("NombreUsuario") %>' />
                 </td>
                   <td style="background-color:#CCFFCC">
-                  <asp:LinkButton runat="server" Text="Editar" ></asp:LinkButton>
+                  <asp:LinkButton runat="server" Text="Editar" OnClick="Unnamed_Click" ></asp:LinkButton>
                 </td>
                   <td style="background-color:#CCFFCC">
                   <asp:LinkButton ID="Eliminar" runat="server" Text="Eliminar" ></asp:LinkButton>
