@@ -3,6 +3,7 @@ using Servicio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Services;
 using System.Web.UI;
@@ -17,28 +18,31 @@ namespace Web_Aplicacion.Formularios
         {
             if (!IsPostBack)
             {
-                this.repetidor.DataSource = Listar();
-                this.repetidor.DataBind();
-                this.repetidor.Dispose();
+                Cargar();
             }
+        }
+        private void Cargar()
+        {
+            this.repetidor.DataSource = Listar();
+            this.repetidor.DataBind();
+            this.repetidor.Dispose();
         }
         private IEnumerable<Customer> Listar()
         {
             return _UsuarioServicio.GetList(null);
         }
-        private int Editar(Customer customer)
+        protected void Eliminar_Click(object sender, EventArgs e)
         {
-            if(customer!= null)
-                return _UsuarioServicio.Edit(customer);
-            throw new Exception("Error al editar");            
+            int MyId;
+            int.TryParse(hdf_Id.Value, out MyId);
+            if (MyId == 0)
+                throw new Exception("Error al Eliminar");
+            _UsuarioServicio.Delete(new Customer() { Id = MyId });
+            Cargar();
         }
-        private int Eliminar(Customer customer)
+        public override void Dispose()
         {
-            if(customer != null)
-                return _UsuarioServicio.Delete(customer);
-            throw new Exception("Error al Eliminar");
+            _UsuarioServicio.Dispose();
         }
-
-        
     }
 }

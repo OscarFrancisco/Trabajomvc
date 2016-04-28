@@ -1,18 +1,16 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Formulario_Lista.aspx.cs" Inherits="Web_Aplicacion.Formularios.Formulario_Lista" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="Formulario_Lista.aspx.cs" Inherits="Web_Aplicacion.Formularios.Formulario_Lista" %>
 
-<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title></title>
-</head>
-<body>
+
+<asp:Content runat="server" ContentPlaceHolderID="MainContent">
     
-    <form id="form1" runat="server">
     <div>
-        <div>Lista</div>
-        <asp:ScriptManager ID="Test1" runat="server" />
+        <asp:HyperLink runat="server" NavigateUrl="~/Formularios/Insertar.aspx" BackColor="Gray" ForeColor="White">Agregar Nuevo</asp:HyperLink>
+    </div>
+    <div>
+        <asp:HiddenField id="hdf_Id" ClientIDMode="Static" runat="server" />
+        
+        
         <asp:Repeater ID="repetidor" runat="server" ClientIDMode="Static" >
             <HeaderTemplate>
                 <table class="table table-bordered table-hover">
@@ -48,10 +46,10 @@
                   <asp:Label runat="server" Text='<%# Eval("NombreUsuario") %>' />
                 </td>
                   <td style="background-color:#CCFFCC">
-                  <asp:LinkButton runat="server" Text="Editar" OnClick="Unnamed_Click" ></asp:LinkButton>
+                    <asp:HyperLink runat="server" NavigateUrl='<%# string.Format("~/Formularios/Editar.aspx?id={0}", Eval("Id")) %>' >Editar</asp:HyperLink> 
                 </td>
-                  <td style="background-color:#CCFFCC">
-                  <asp:LinkButton ID="Eliminar" runat="server" Text="Eliminar" ></asp:LinkButton>
+                <td style="background-color:#CCFFCC">
+                    <asp:LinkButton ID="Eliminar" runat="server" Text="Eliminar" OnClick="Eliminar_Click" OnClientClick='<%# string.Format("document.getElementById(\"hdf_Id\").value = {0};", Eval("Id")) %>'  ></asp:LinkButton>
                 </td>
               </tr>
             </ItemTemplate>
@@ -60,8 +58,5 @@
             </FooterTemplate>
             
         </asp:Repeater>
-
     </div>
-    </form>
-</body>
-</html>
+</asp:Content>

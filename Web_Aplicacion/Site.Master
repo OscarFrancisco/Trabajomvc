@@ -67,6 +67,7 @@
                         <li><a runat="server" href="~/">Inicio</a></li>
                         <li><a runat="server" href="~/About">Acerca de</a></li>
                         <li><a runat="server" href="~/Contact">Contacto</a></li>
+                        <li><a runat="server" href="~/Formularios/Formulario_Lista">Mantenimiento Usuarios</a></li>
                     </ul>
                 </nav>
             </div>

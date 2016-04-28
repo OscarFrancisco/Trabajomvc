@@ -13,22 +13,13 @@ namespace Web_Aplicacion.Formularios {
     public partial class Formulario_Lista {
         
         /// <summary>
-        /// Control form1.
+        /// Control hdf_Id.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-        
-        /// <summary>
-        /// Control Test1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.ScriptManager Test1;
+        protected global::System.Web.UI.WebControls.HiddenField hdf_Id;
         
         /// <summary>
         /// Control repetidor.
