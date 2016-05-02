@@ -11,14 +11,6 @@ namespace Infraestructura
     public class AppContext : DbContext, IUnitOfWork, IRepositorio
     {
         public IDbSet<Customer> Customers {get;set;}
-        public AppContext(): base("DefaultConnection")
-        {
-            var string_ = this.Database.Connection.ConnectionString;
-        }
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            modelBuilder.Configurations.Add(new Configuration.CustomerConfiguration());
-            base.OnModelCreating(modelBuilder);
-        }
+        public AppContext(): base("DefaultConnection"){}
     }
 }
