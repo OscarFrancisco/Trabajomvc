@@ -1,5 +1,4 @@
 ﻿using Dominio;
-using Infraestructura;
 using Servicio;
 using System;
 using System.Collections.Generic;
@@ -13,23 +12,15 @@ namespace WebServicesWCF
 {
     public class CustomerService : ICustomerService
     {
-        public ICustomerServicio<Customer> _usuarioServicio { get; set; }
-
-        public CustomerService()
+        private readonly ICustomerServicio<Customer> _usuarioServicio;
+        public Customer Get(int id)
         {
-            _usuarioServicio = new Servicio.CustomerServicio(new AppContext());
-        } 
-
-        public Customer Get(int Id)
-        {
-            return _usuarioServicio.Get(Id);
+            return _usuarioServicio.Get(id);
         }
-
         public Customer Add(Customer customer)
         {
             return _usuarioServicio.Insert(customer);
         }
-
         public int Update(Customer customer)
         {
             return _usuarioServicio.Edit(customer);
