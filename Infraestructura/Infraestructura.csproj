@@ -50,6 +50,15 @@
     <Compile Include="AppContext.cs" />
     <Compile Include="IUnitOfWork.cs" />
     <Compile Include="IRepositorio.cs" />
+    <Compile Include="Migrations\201604280959482_InitialCreate.cs" />
+    <Compile Include="Migrations\201604280959482_InitialCreate.Designer.cs">
+      <DependentUpon>201604280959482_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605021134357_Migracion1.cs" />
+    <Compile Include="Migrations\201605021134357_Migracion1.Designer.cs">
+      <DependentUpon>201605021134357_Migracion1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -58,7 +67,14 @@
       <Name>Dominio</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201604280959482_InitialCreate.resx">
+      <DependentUpon>201604280959482_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605021134357_Migracion1.resx">
+      <DependentUpon>201605021134357_Migracion1.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />

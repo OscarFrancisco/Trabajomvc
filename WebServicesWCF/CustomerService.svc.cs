@@ -12,18 +12,16 @@ namespace WebServicesWCF
 {
     public class CustomerService : ICustomerService
     {
-        readonly ICustomerServicio<Customer> _usuarioServicio;
+        public ICustomerServicio<Customer> _usuarioServicio {get; set;}
         public CustomerService(ICustomerServicio<Customer> usuarioServicio)
         {
             _usuarioServicio = usuarioServicio;
-        }
-        public CustomerService()
-        { 
-            
-        }
-        public Customer Get(int id)
+        }    
+        public Customer Get(string id)
         {
-            return _usuarioServicio.Get(id);
+            int Out;
+            int.TryParse(id, out Out);
+            return _usuarioServicio.Get(Out);
         }
         public Customer Add(Customer customer)
         {
@@ -33,9 +31,11 @@ namespace WebServicesWCF
         {
             return _usuarioServicio.Edit(customer);
         }
-        public int Delete(Customer instancia)
+        public int Delete(string id)
         {
-            return _usuarioServicio.Delete(instancia);
+            int Out;
+            int.TryParse(id, out Out);
+            return _usuarioServicio.Delete(new Customer() { Id = Out });
         }
         public IEnumerable<Customer> GetAll()
         {

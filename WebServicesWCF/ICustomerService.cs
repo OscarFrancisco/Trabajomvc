@@ -13,24 +13,24 @@ namespace WebServicesWCF
     public interface ICustomerService
     {
         [OperationContract]
-        [WebInvoke(Method = "POST", UriTemplate = "/Customer", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        [WebInvoke(Method = "POST", UriTemplate = "Post", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
         Customer Add(Customer customer);
 
         [OperationContract]
-        //[WebInvoke(Method = "PUT", UriTemplate = "/customer", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        [WebInvoke(Method = "PUT", UriTemplate = "Put")]
         int Update(Customer customer);
 
         [OperationContract]
-        //[WebInvoke(Method = "DELETE", UriTemplate = "/customer")]
-        int Delete(Customer customer);
+        [WebInvoke(Method = "DELETE", UriTemplate = "Delete/{id}")]
+        int Delete(string id);
 
 
         [OperationContract]
-        //[WebGet(UriTemplate="/id")]
-        Customer Get(int id);
+        [WebGet(UriTemplate = "Get/{id}")]
+        Customer Get(string id);
 
         [OperationContract]
-        [WebGet]
+        [WebGet(UriTemplate="GetAll")]
         IEnumerable<Customer> GetAll();
 
     }

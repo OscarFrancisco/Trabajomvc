@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using Autofac.Integration.Wcf;
 using Dominio;
+using Infraestructura;
 using Servicio;
 using System;
 using System.Collections.Generic;
@@ -16,10 +17,11 @@ namespace WebServicesWCF
         protected void Application_Start(object sender, EventArgs e)
         {
             var builder = new ContainerBuilder();
-            builder.RegisterType<CustomerService>().As<ICustomerService>();
-            builder.RegisterType<CustomerServicio>();//.As<ICustomerServicio<Customer>>();
+            builder.RegisterType<WebServicesWCF.CustomerService>().As<WebServicesWCF.ICustomerService>();
+            builder.RegisterType<AppContext>().As<IRepositorio>();
+            builder.RegisterType<CustomerServicio>().As<ICustomerServicio<Customer>>();
             var container = builder.Build();
-            AutofacHostFactory.Container = container;
+            AutofacHostFactory.Container = container;   //Install-Package Autofac.Wcf
         }
     }
 }
