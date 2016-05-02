@@ -17,7 +17,7 @@ namespace WebServicesWCF
         Customer Add(Customer customer);
 
         [OperationContract]
-        [WebInvoke(Method = "PUT", UriTemplate = "Put")]
+        [WebInvoke(Method = "PUT", UriTemplate = "Put", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
         int Update(Customer customer);
 
         [OperationContract]
@@ -26,11 +26,11 @@ namespace WebServicesWCF
 
 
         [OperationContract]
-        [WebGet(UriTemplate = "Get/{id}")]
+        [WebGet(UriTemplate = "Get/{id}", ResponseFormat = WebMessageFormat.Json)]
         Customer Get(string id);
 
         [OperationContract]
-        [WebGet(UriTemplate="GetAll")]
+        [WebGet(UriTemplate = "Get", ResponseFormat = WebMessageFormat.Json)]
         IEnumerable<Customer> GetAll();
 
     }
