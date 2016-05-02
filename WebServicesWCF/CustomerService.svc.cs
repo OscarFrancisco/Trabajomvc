@@ -12,7 +12,15 @@ namespace WebServicesWCF
 {
     public class CustomerService : ICustomerService
     {
-        private readonly ICustomerServicio<Customer> _usuarioServicio;
+        readonly ICustomerServicio<Customer> _usuarioServicio;
+        public CustomerService(ICustomerServicio<Customer> usuarioServicio)
+        {
+            _usuarioServicio = usuarioServicio;
+        }
+        public CustomerService()
+        { 
+            
+        }
         public Customer Get(int id)
         {
             return _usuarioServicio.Get(id);
@@ -29,9 +37,9 @@ namespace WebServicesWCF
         {
             return _usuarioServicio.Delete(instancia);
         }
-        public IEnumerable<Customer> GetAll(string nombre)
+        public IEnumerable<Customer> GetAll()
         {
-            return _usuarioServicio.GetList(nombre);
+            return _usuarioServicio.GetList(null);
         }
     }
 }
