@@ -6,54 +6,59 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Presentador;
+using Presentador.Vista;
 
 namespace Web_Aplicacion.Formularios
 {
-    public partial class Editar : System.Web.UI.Page
+    public partial class Editar : System.Web.UI.Page, IView
     {
-        public ICustomerServicio<Customer> _UsuarioServicio { get; set; }
-        private Customer _MyCustomer = new Customer();
+        readonly IPresentadorBase _OperacionEditar;
+        public Editar()
+        {
+            _OperacionEditar = new PresentadorBase(this);
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                var id = int.Parse( Page.Request.QueryString["id"]);
-                _MyCustomer = Get(id);
-                MostrarValoresPorDefecto();
+                int id;
+                int.TryParse(Page.Request.QueryString["id"], out id);
+                hdfId.Value = id.ToString();
+                MyCustomer = _OperacionEditar.Get();
             }
-        }
-
-        private void MostrarValoresPorDefecto()
-        {
-            txtNombre.Text = _MyCustomer.Nombre;
-            txtNombreUsuario.Text = _MyCustomer.NombreUsuario;
-            txtTelefono.Text = _MyCustomer.Telefono;
-            txtCorreo.Text = _MyCustomer.Correo;
         }
         protected void btn_Editar_Click(object sender, EventArgs e)
         {
-            _MyCustomer.Id = int.Parse(Page.Request.QueryString["id"]);
-            _MyCustomer.Nombre = txtNombre.Text;
-            _MyCustomer.NombreUsuario = txtNombreUsuario.Text;
-            _MyCustomer.Correo = txtCorreo.Text;
-            _MyCustomer.Telefono = txtTelefono.Text;
-            
-            _UsuarioServicio.Edit(_MyCustomer);
-            Redireccionar();
-        }
-
-        
-        private void Redireccionar()
-        {
-            this.Response.Redirect("Formulario_Lista.aspx");
-        }
-        private Customer Get(int Id)
-        {
-            return _UsuarioServicio.Get(Id);
+            _OperacionEditar.UpdateViewEdit();
+            Response.Redirect(hlRegresar.NavigateUrl);
         }
         public override void Dispose()
         {
-            _UsuarioServicio.Dispose();
+            _OperacionEditar.Dispose();
         }
+        public Customer MyCustomer
+        {
+            get {
+                    return new Customer() { 
+                                            Id = int.Parse(hdfId.Value), 
+                                            Correo = txtCorreo.Text, 
+                                            Nombre = txtNombre.Text, 
+                                            NombreUsuario = txtNombreUsuario.Text, 
+                                            Telefono = txtTelefono.Text 
+                                          };
+                }
+            set {
+                    if (value != null)
+                    {
+                        hdfId.Value = value.Id.ToString();
+                        txtNombre.Text = value.Nombre;
+                        txtCorreo.Text = value.Correo;
+                        txtTelefono.Text = value.Telefono;
+                        txtNombreUsuario.Text = value.NombreUsuario;
+                    }
+                }
+        }
+        
     }
 }

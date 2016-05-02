@@ -198,6 +198,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Formularios\Editar.aspx" />
+    <Content Include="Formularios\Eliminar.aspx" />
     <Content Include="Formularios\Formulario_Lista.aspx" />
     <Content Include="Formularios\Insertar.aspx" />
     <Content Include="Images\accent.png" />
@@ -326,6 +327,13 @@
     <Compile Include="Formularios\Editar.aspx.designer.cs">
       <DependentUpon>Editar.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Eliminar.aspx.cs">
+      <DependentUpon>Eliminar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Formularios\Eliminar.aspx.designer.cs">
+      <DependentUpon>Eliminar.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Formulario_Lista.aspx.cs">
       <DependentUpon>Formulario_Lista.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -381,6 +389,10 @@
     <ProjectReference Include="..\Infraestructura\Infraestructura.csproj">
       <Project>{f4b957b0-9f34-4757-b3e3-47096270cec0}</Project>
       <Name>Infraestructura</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Presentador\Presentador.csproj">
+      <Project>{1ce26f74-52f7-41ee-a674-74488e5c4ac2}</Project>
+      <Name>Presentador</Name>
     </ProjectReference>
     <ProjectReference Include="..\Servicio\Servicio.csproj">
       <Project>{aeeb2ea9-c019-4875-99b5-d1f2bf569fbf}</Project>

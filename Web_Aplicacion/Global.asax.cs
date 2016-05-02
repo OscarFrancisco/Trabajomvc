@@ -19,26 +19,14 @@ namespace Web_Aplicacion
         static IContainerProvider _containerProvider;
         void Application_Start(object sender, EventArgs e)
         {
-            // Código que se ejecuta al iniciar la aplicación
             AutofacConfig.RegisterAutoFac();
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterOpenAuth();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            
         }
-
-        void Application_End(object sender, EventArgs e)
-        {
-            //  Código que se ejecuta al cerrarse la aplicación
-
-        }
-
-        void Application_Error(object sender, EventArgs e)
-        {
-            // Código que se ejecuta cuando se produce un error no controlado
-
-        }
-
+        /// <summary>
+        /// Necesario para trabajar con autofac
+        /// </summary>
         public IContainerProvider ContainerProvider
         {
             get { return AutofacConfig._containerProvider; }

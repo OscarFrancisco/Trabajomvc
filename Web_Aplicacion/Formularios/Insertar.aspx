@@ -31,6 +31,6 @@
     <div></div>
     <div>
         <asp:Button ID="btn_Agregar" Width="200px" Text="Agregar" runat="server" ClientIDMode="Static" OnClick="btn_Agregar_Click" />
-        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Formularios/Formulario_Lista.aspx" >Regresar</asp:HyperLink>
+        <asp:HyperLink ID="hlRegresar" runat="server" NavigateUrl="~/Formularios/Formulario_Lista.aspx" >Regresar</asp:HyperLink>
     </div>
 </asp:Content>

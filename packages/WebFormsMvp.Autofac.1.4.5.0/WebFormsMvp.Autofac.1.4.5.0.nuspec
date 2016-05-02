@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>WebFormsMvp.Autofac</id>
+    <version>1.4.5.0</version>
+    <title>Web Forms MVP + Autofac</title>
+    <authors>Damian Edwards,  Tatham Oddie and contributors</authors>
+    <owners>Damian Edwards,  Tatham Oddie and contributors</owners>
+    <licenseUrl>http://webformsmvp.codeplex.com/license</licenseUrl>
+    <projectUrl>http://webformsmvp.codeplex.com/</projectUrl>
+    <iconUrl>http://webformsmvp.com/nugetlogo.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Provides Autofac integration for Web Forms MVP presenter resolution.</description>
+    <summary />
+    <language>en-US</language>
+    <dependencies>
+      <dependency id="webformsmvp" version="1.4.5.0" />
+      <dependency id="Autofac.Web" version="2.4" />
+    </dependencies>
+  </metadata>
+</package>

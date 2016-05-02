@@ -1,4 +1,6 @@
 ﻿using Dominio;
+using Presentador;
+using Presentador.Vista;
 using Servicio;
 using System;
 using System.Collections.Generic;
@@ -11,38 +13,23 @@ using System.Web.UI.WebControls;
 
 namespace Web_Aplicacion.Formularios
 {
-    public partial class Formulario_Lista : System.Web.UI.Page
+    public partial class Formulario_Lista : System.Web.UI.Page, IView
     {
-        public ICustomerServicio<Customer> _UsuarioServicio { get; set; }
+        readonly IPresentadorBase _OperacionListar;
+        public Formulario_Lista()
+        {
+            _OperacionListar = new PresentadorBase(this);
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                Cargar();
-            }
-        }
-        private void Cargar()
-        {
-            this.repetidor.DataSource = Listar();
+            this.repetidor.DataSource = _OperacionListar.GetAll();
             this.repetidor.DataBind();
             this.repetidor.Dispose();
         }
-        private IEnumerable<Customer> Listar()
-        {
-            return _UsuarioServicio.GetList(null);
-        }
-        protected void Eliminar_Click(object sender, EventArgs e)
-        {
-            int MyId;
-            int.TryParse(hdf_Id.Value, out MyId);
-            if (MyId == 0)
-                throw new Exception("Error al Eliminar");
-            _UsuarioServicio.Delete(new Customer() { Id = MyId });
-            Cargar();
-        }
         public override void Dispose()
         {
-            _UsuarioServicio.Dispose();
+            _OperacionListar.Dispose();
         }
+        public Customer MyCustomer{get;set;}
     }
 }

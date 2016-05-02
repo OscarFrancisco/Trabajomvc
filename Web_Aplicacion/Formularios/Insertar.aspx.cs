@@ -1,4 +1,6 @@
 ﻿using Dominio;
+using Presentador;
+using Presentador.Vista;
 using Servicio;
 using System;
 using System.Collections.Generic;
@@ -9,32 +11,47 @@ using System.Web.UI.WebControls;
 
 namespace Web_Aplicacion.Formularios
 {
-    public partial class Insertar : System.Web.UI.Page
+    public partial class Insertar : System.Web.UI.Page, IView
     {
-        public ICustomerServicio<Customer> _UsuarioServicio { get; set; }
+        readonly IPresentadorBase _OperacionEditar;
+        public Insertar()
+        {
+            _OperacionEditar = new PresentadorBase(this);
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
         protected void btn_Agregar_Click(object sender, EventArgs e)
         {
-            Customer MyCustomer = new Customer()
-                                {
-                                    Nombre=this.txtNombre.Text,
-                                    Correo=this.txtCorreo.Text,
-                                    NombreUsuario=this.txtNombreUsuario.Text,
-                                    Telefono=this.txtTelefono.Text
-                                };
-            _UsuarioServicio.Insert(MyCustomer);
-            Redireccionar();
+            _OperacionEditar.UpdateViewAdd();
+            Response.Redirect(hlRegresar.NavigateUrl);
         }
-        private void Redireccionar()
+        public Customer MyCustomer
         {
-            this.Response.Redirect("Formulario_Lista.aspx");
+            get
+            {
+                return new Customer()
+                {
+                    Correo = txtCorreo.Text,
+                    Nombre = txtNombre.Text,
+                    NombreUsuario = txtNombreUsuario.Text,
+                    Telefono = txtTelefono.Text
+                };
+            }
+            set
+            {
+                if (value != null)
+                {
+                    txtNombre.Text = value.Nombre;
+                    txtCorreo.Text = value.Correo;
+                    txtTelefono.Text = value.Telefono;
+                    txtNombreUsuario.Text = value.NombreUsuario;
+                }
+            }
         }
         public override void Dispose()
         {
-            _UsuarioServicio.Dispose();
+            _OperacionEditar.Dispose();
         }
     }
 }

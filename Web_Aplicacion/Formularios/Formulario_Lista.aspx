@@ -8,8 +8,6 @@
         <asp:HyperLink runat="server" NavigateUrl="~/Formularios/Insertar.aspx" BackColor="Gray" ForeColor="White">Agregar Nuevo</asp:HyperLink>
     </div>
     <div>
-        <asp:HiddenField id="hdf_Id" ClientIDMode="Static" runat="server" />
-        
         
         <asp:Repeater ID="repetidor" runat="server" ClientIDMode="Static" >
             <HeaderTemplate>
@@ -49,7 +47,7 @@
                     <asp:HyperLink runat="server" NavigateUrl='<%# string.Format("~/Formularios/Editar.aspx?id={0}", Eval("Id")) %>' >Editar</asp:HyperLink> 
                 </td>
                 <td style="background-color:#CCFFCC">
-                    <asp:LinkButton ID="Eliminar" runat="server" Text="Eliminar" OnClick="Eliminar_Click" OnClientClick='<%# string.Format("document.getElementById(\"hdf_Id\").value = {0};", Eval("Id")) %>'  ></asp:LinkButton>
+                    <asp:HyperLink runat="server" NavigateUrl='<%# string.Format("~/Formularios/Eliminar.aspx?id={0}", Eval("Id")) %>' >Eliminar</asp:HyperLink>
                 </td>
               </tr>
             </ItemTemplate>
